@@ -2,3 +2,32 @@
 <!-- HTML INDEX PAGE -->
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://cdnis.cloudfare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <title>Crue's Doggie Database</title>
+</head>
+<body>
+  <div class="app-wrap">
+    <div id="app-header">
+      <div id="database-title" class="app-header__item">
+        <h1>Doggie Database</h1>
+      </div>
+      <div id="input-wrap" class="app-header__item">
+        <input class="input-search" type="text" placeholder="Search...">
+      </div>
+    </div>
+  </div>
+
+  <div class="app-list-wrap">
+    <ul class="dog-list"></ul>
+    <div id="modal-container"></div>
+  </div>
+
+  <script src="js/promise-polyfill.js"></script>
+  <script src="js/fetch-polyfill.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
