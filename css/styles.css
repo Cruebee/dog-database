@@ -1,0 +1,167 @@
+/* CSS stylesheet */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fffafa;
+  color: #065535;
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button {
+  background: #d2b48c;
+  color: #000;
+  font-family: Lato, sans-serif;
+  font-size: 18px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  transition: 0.4s opacity;
+}
+
+.list-button {
+  width: 200px;
+  height: 50px;
+  background: #add8e6;
+  color: #000;
+  font-family: inherit;
+  font-size: 18px;
+  text-align: left;
+  border: 2px solid #000;
+  transition: 0.4s opacity;
+}
+
+button:hover,
+button:focus,
+button:active {
+  border: 2px solid #008000;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#app-title {
+  min-width: 250px;
+  max-width: 1200px;
+  display: block;
+  justify-content: center;
+}
+
+#app-header {
+  min-width: 250px;
+  max-width: 1208px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#input-wrap {
+  padding: 2px;
+  margin: 2px;
+  text-align: right;
+}
+
+.input-search {
+  min-width: 150px;
+  max-width: 200px;
+  height: 55px;
+  background: #add8e6;
+  text-align: right;
+}
+
+.app-header__item {
+  width: 100%;
+  height: 60px;
+}
+
+.app-list-wrap {
+  min-width: 250px;
+  max-width: 1200px;
+  margin: 2px;
+  border: 2px solid rgba(0, 230, 64, 0.6);
+}
+
+.dog-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.dog-list li {
+  padding: 2px;
+}
+
+/* styling for modal */
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  /* to show it above all other content */
+  z-index: 999;
+
+  /* to allow scrolling if screen is not high enough */
+  overflow: auto;
+
+  /* this is used to center modal */
+  display: grid;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+}
+
+.modal-close {
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+}
+
+.modal h1 {
+  margin-top: 0;
+}
+
+.modal p {
+  margin-bottom: 0;
+}
+
+/* styling for dog image inside modal */
+.dog-image {
+  margin: auto;
+  display: block;
+  width: 150px;
+  height: 150px;
+}
+
+/* media query for smaller screens */
+@media all and (max-width: 500px) {
+  .dog-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
