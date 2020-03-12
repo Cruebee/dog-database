@@ -66,7 +66,7 @@ var pokemonRepository = (function () {
 
     var modalTitle = $('<h1>' + item.name + '</h1>');
 
-    var modalContentType = $('<p>Type: ' + item.types + '</p>');
+    var modalContentType = $('<p>Type(s): ' + item.types + '</p>');
 
     var modalContentHeight = $('<p>Height: ' + item.height + '</p>');
 
@@ -94,14 +94,10 @@ $(window).keydown(function(e) {
 });
 
   // event listener for clicking outside modal to close:
-  $modalContainer.on('click', (e) => {
-        // this is triggered even when clicking INSIDE modal
-        // we only want this to close modal when clicking ouside modal:
-        var target = e.target;
-        if (target === $modalContainer) {
-          hideModal();
-        } // this function isn't working!!!! WHY?!?!?!?!
-      });
+  $modalContainer.click(function () {
+    hideModal();
+  });
+
 
   // add function to show details and update to show modal:
   function showDetails(item) {
