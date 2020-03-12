@@ -82,7 +82,7 @@ button:active {
   border: 2px solid rgba(0, 230, 64, 0.6);
 }
 
-.dog-list {
+.pokemon-list {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
@@ -91,7 +91,7 @@ button:active {
   align-items: center;
 }
 
-.dog-list li {
+.pokemon-list li {
   padding: 2px;
 }
 
@@ -150,7 +150,7 @@ button:active {
 }
 
 /* styling for dog image inside modal */
-.dog-image {
+.pokemon-image {
   margin: auto;
   display: block;
   width: 150px;
