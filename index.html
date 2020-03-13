@@ -2,9 +2,14 @@
 <!-- HTML INDEX PAGE -->
 <html>
 <head>
+  <!-- required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!-- any styles you wish to overwrite with your own CSS/fonts goes after bootstrap CSS -->
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <title>Crue's jQuery Poke-tracker</title>
@@ -26,11 +31,15 @@
     <div id="modal-container"></div>
   </div>
 
-  <!-- this app will not use polyfills but should still work on older browsers -->
+  <!-- this version of app will not use polyfills but should still work on older browsers -->
+  <!-- You are using $.ajax features for your app so you must include full version of jQuery -->
   <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+  <!-- if you wanted to use the features to add tooltips and popovers you would need to add Bootstrap's second dependency (popper.js) Since the poke-tracker won't be using these features you can exclude the dependency -->
+  <!-- here we add Bootstrap's script tag before custom script tag! browser reads top to bottom! -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="js/scripts.js"></script>
 </body>
 </html>
