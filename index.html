@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- HTML INDEX PAGE -->
-<html>
+<html lang="en">
 <head>
   <!-- required meta tags -->
   <meta charset="utf-8">
@@ -9,27 +9,47 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<!-- any styles you wish to overwrite with your own CSS/fonts goes after bootstrap CSS -->
+  <!-- any styles you wish to overwrite with your own CSS/fonts goes after bootstrap CSS -->
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <title>Crue's jQuery Poke-tracker</title>
 </head>
 <body>
-  <div class="app-wrap">
-    <div id="app-header">
-      <div id="database-title" class="app-header__item">
-        <h1>Pokedex with jQuery</h1>
-      </div>
-      <div id="input-wrap" class="app-header__item">
-        <input class="input-search" type="text" placeholder="Search...">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h3>Pokedex with jQuery</h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <ul class="list-unstyled pokemon-list"></ul>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="pokeModalScrollable" tabindex="-1" role="dialog" aria-labelledby="pokeModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pokeModalScrollableTitle">Pokemon:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="app-list-wrap">
-    <ul class="pokemon-list"></ul>
-    <div id="modal-container"></div>
-  </div>
 
   <!-- this version of app will not use polyfills but should still work on older browsers -->
   <!-- You are using $.ajax features for your app so you must include full version of jQuery -->
@@ -39,7 +59,7 @@
   crossorigin="anonymous"></script>
   <!-- if you wanted to use the features to add tooltips and popovers you would need to add Bootstrap's second dependency (popper.js) Since the poke-tracker won't be using these features you can exclude the dependency -->
   <!-- here we add Bootstrap's script tag before custom script tag! browser reads top to bottom! -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="js/scripts.js"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 var pokemonRepository = (function () {
   var repository = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  var $pokemonList = $('ul');
-  var $modalContainer = $('#modal-container');
+  var $pokemonList = $('.pokemon-list');
+  // remove unused modal-container variable
 
   // funcrtion to load a list of pokemon from API:
   function loadList() {
@@ -31,10 +31,11 @@ var pokemonRepository = (function () {
     }).then(function (details) {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = [];
-      for (var i = 0; i < details.types.length; i++) {
-        item.types.push(details.types[i].type.name);
-      }
+      // Cleaner way to loop over pokemon types with map:
+      item.types = details.types.map(function(pokemon) {
+        return pokemon.type.name;
+      });
+
     }).catch(function(e) {
       console.error(e);
     })
@@ -43,7 +44,7 @@ var pokemonRepository = (function () {
   // function to create a list of pokemon from API:
   function addListItem(pokemon) {
     var $listItem = $('<li></li>');
-    var $listButton = $('<button type="button" class="list-button">' + pokemon.name + '</button>');
+    var $listButton = $('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pokeModalScrollable">' + pokemon.name + '</button>');
 
     // append $listButton to  listItem and append $listItem to $pokemonList:
     $listItem.append($listButton);
@@ -54,55 +55,12 @@ var pokemonRepository = (function () {
     });
   }
 
-  // function to show modal:
-  function showModal(item) {
-    $modalContainer.empty();
-    $modalContainer.addClass('is-visible');
-    var modal = $('<div class="modal"></div>');
-
-    // add new modal content:
-    var closeModalButton = $('<button class="modal-close">' + 'Close' + '</button>');
-    closeModalButton.on('click', hideModal);
-
-    var modalTitle = $('<h1>' + item.name + '</h1>');
-
-    var modalContentType = $('<p>Type(s): ' + item.types + '</p>');
-
-    var modalContentHeight = $('<p>Height: ' + item.height + '</p>');
-
-    var modalContentImage = $('<img class="pokemon-image">');
-    modalContentImage.attr('src', item.imageUrl);
-
-    // append items to modal, append modal to modal-container:
-    modal.append(closeModalButton);
-    modal.append(modalTitle);
-    modal.append(modalContentType);
-    modal.append(modalContentHeight);
-    modal.append(modalContentImage);
-    $modalContainer.append(modal);
-  }
-
-  // function to hide modal:
-  function hideModal() {
-    $modalContainer.removeClass('is-visible');
-  }
-  // add event listener to close modal when "escape" key pressed:
-$(window).keydown(function(e) {
-  if (e.key === "Escape") {
-    hideModal();
-  }
-});
-
-  // event listener for clicking outside modal to close:
-  $modalContainer.click(function () {
-    hideModal();
-  });
-
+  // function to show modal: has been removed because Bootstrap modal will be used instead.
 
   // add function to show details and update to show modal:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
-      pokemonRepository.showModal(item);
+      showModal(item);
     })
   }
 
@@ -122,9 +80,7 @@ $(window).keydown(function(e) {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails,
-    showModal: showModal,
-    hideModal: hideModal
+    showDetails: showDetails
   };
 
 })(); // end IIFE.
