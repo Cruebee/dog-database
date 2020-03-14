@@ -2,8 +2,34 @@
 
 .page-container {
   margin-top: 60px;
+  justify-content: center;
 }
 
-.pokemon-search {
+#pokemon-search {
   text-align: right;
+}
+
+.modal-title {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.modal-body {
+  text-transform: capitalize;
+  text-align: center;
+  line-height: 0.5;
+}
+
+.close-modal-button {
+  border-color: red;
+}
+
+.btn-primary {
+  margin: auto;
+  width: 100%;
+}
+
+.pokemon-list-wrap {
+  margin: auto;
+  justify-content: center;
 }
