@@ -60,7 +60,7 @@ var pokemonRepository = (function () {
   // add function to show details and update to show modal:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
-      showModal(item);
+      $('#pokeModalScrollable').modal(show);
     })
   }
 
