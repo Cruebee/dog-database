@@ -43,12 +43,14 @@ var pokemonRepository = (function () {
 
   // function to create a list of pokemon from API:
   function addListItem(pokemon) {
-    var $listItem = $('<button type="button" class="btn btn-primary list-group-item list-group-item-active" data-toggle="modal" data-target="#pokeModalScrollable">' + pokemon.name + '</button>');
+    var $listItem = $('<li></li>');
+    var $listButton = $('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pokeModalScrollable">' + pokemon.name + '</button>');
 
-    // append $listItem to $pokemonList
+    // append $listButton to  listItem and append $listItem to $pokemonList:
+    $listItem.append($listButton);
     $pokemonList.append($listItem);
     // add event listener for clicking on a pokemon button:
-    $listItem.on('click', function(event) {
+    $listButton.on('click', function(event) {
       showDetails(pokemon);
     });
   }
@@ -58,7 +60,7 @@ var pokemonRepository = (function () {
   // add function to show details and update to show modal:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
-      $('#pokeModalScrollable').modal('show');
+      showModal(item);
     })
   }
 
