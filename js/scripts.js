@@ -43,7 +43,7 @@ var pokemonRepository = (function () {
 
   // function to create a list of pokemon from API:
   function addListItem(pokemon) {
-    var $listItem = $('<li></li>');
+    var $listItem = $('<li class="list-group-item list-group-item-active"></li>');
     var $listButton = $('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pokeModalScrollable">' + pokemon.name + '</button>');
 
     // append $listButton to  listItem and append $listItem to $pokemonList:
