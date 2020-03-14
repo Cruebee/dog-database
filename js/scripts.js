@@ -57,7 +57,8 @@ var pokemonRepository = (function () {
 
   // function to show modal: has been removed because Bootstrap modal will be used instead.
   // create new function to load pokemon-details into Bootstrap modal:
-  function showModal(item) {
+  function showModalDetails(item) {
+    var modal = $('#pokeModalScrollable');
     var modalBody = $('.modal-body');
     var modalTitle = $('.modal-title');
     // Clear existing modal content:
@@ -75,12 +76,13 @@ var pokemonRepository = (function () {
     modalBody.append(pokemonHeight);
     modalBody.append(pokemonTypes);
     modalBody.append(pokemonImage);
+    modal.append(modalBody)
   }
 
   // add function to show details and update to show modal:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
-      showModal(item);
+      showModalDetails(item);
     })
   }
 
@@ -101,7 +103,7 @@ var pokemonRepository = (function () {
     loadList: loadList,
     loadDetails: loadDetails,
     showDetails: showDetails,
-    showModal: showModal
+    showModalDetails: showModalDetails
   };
 
 })(); // end IIFE.
