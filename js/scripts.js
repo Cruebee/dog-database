@@ -2,7 +2,7 @@
 // create IIFE
 var pokemonRepository = (function () {
   var repository = [];
-  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=50';
   var $pokemonList = $('.pokemon-list');
   // remove unused modal-container variable
 
@@ -50,17 +50,37 @@ var pokemonRepository = (function () {
     $listItem.append($listButton);
     $pokemonList.append($listItem);
     // add event listener for clicking on a pokemon button:
-    $listButton.on('click', function(event) {
+    $listButton.on('click', function() {
       showDetails(pokemon);
     });
   }
 
   // function to show modal: has been removed because Bootstrap modal will be used instead.
+  // create new function to load pokemon-details into Bootstrap modal:
+  function showModal(item) {
+    var modalBody = $('.modal-body');
+    var modalTitle = $('.modal-title');
+    // Clear existing modal content:
+    modalBody.empty();
+    modalTitle.empty();
+    // add pokemon details:
+    var pokemonName = $('<h1>' + item.name + '</h1>');
+    var pokemonHeight = $('<p>Height: ' + item.height + '</p>');
+    var pokemonTypes = $('<p>Type(s): ' + item.types + '</p>');
+    var pokemonImage = $('<img class="img-fluid pokemon-image"');
+    pokemonImage.attr('src', item.imageUrl);
+
+    // append content to modal:
+    modalTitle.append(pokemonName);
+    modalBody.append(pokemonHeight);
+    modalBody.append(pokemonTypes);
+    modalBody.append(pokemonImage);
+  }
 
   // add function to show details and update to show modal:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
-      $('#pokeModalScrollable').modal(show);
+      showModal(item);
     })
   }
 
@@ -80,7 +100,8 @@ var pokemonRepository = (function () {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails
+    showDetails: showDetails,
+    showModal: showModal
   };
 
 })(); // end IIFE.
