@@ -43,8 +43,8 @@ var pokemonRepository = (function () {
 
   // function to create a list of pokemon from API:
   function addListItem(pokemon) {
-    var $listItem = $('<li class="list-group-item list-group-item-active"></li>');
-    var $listButton = $('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pokeModalScrollable">' + pokemon.name + '</button>');
+    var $listItem = $('<li class="list-group-item list-group-item-action"></li>');
+    var $listButton = $('<button id="showPokeModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#pokeModalLong">' + pokemon.name + '</button>');
 
     // append $listButton to  listItem and append $listItem to $pokemonList:
     $listItem.append($listButton);
@@ -57,34 +57,22 @@ var pokemonRepository = (function () {
 
   // function to show modal: has been removed because Bootstrap modal will be used instead.
   // create new function to load pokemon-details into Bootstrap modal:
-  function showModalDetails(item) {
-    var modal = $('#pokeModalScrollable');
-    var modalBody = $('.modal-body');
-    var modalTitle = $('.modal-title');
-    // Clear existing modal content:
-    modalBody.empty();
-    modalTitle.empty();
-    // add pokemon details:
-    var pokemonName = $('<h1>' + item.name + '</h1>');
-    var pokemonHeight = $('<p>Height: ' + item.height + '</p>');
-    var pokemonTypes = $('<p>Type(s): ' + item.types + '</p>');
-    var pokemonImage = $('<img class="img-fluid pokemon-image"');
-    pokemonImage.attr('src', item.imageUrl);
-
-    // append content to modal:
-    modalTitle.append(pokemonName);
-    modalBody.append(pokemonHeight);
-    modalBody.append(pokemonTypes);
-    modalBody.append(pokemonImage);
-    modal.append(modalBody)
+  function showModalDetails(imageUrl, name, height, types) {
+    //Modal Title
+    $('.modal-title').text(name);
+    $('.modal-body')
+      .empty()
+      .append('<p>Height: ' + height + '</p>')
+      .append('<p>Types: ' + types+ '</p>')
+      .append('<img src="' + imageUrl + '"></img>');
   }
 
   // add function to show details and update to show modal:
   function showDetails(item) {
-    pokemonRepository.loadDetails(item).then(function() {
-      showModalDetails(item);
-    })
-  }
+  pokemonRepository.loadDetails(item).then(function() {
+    showModalDetails(item.imageUrl, item.name, item.height, item.types);
+  });
+}
 
   // function to add pokemon:
   function add(creature) {
@@ -112,5 +100,22 @@ var pokemonRepository = (function () {
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
+  });
+});
+
+// create search bar functionality:
+$(document).ready(function() {
+  $('#pokemon-search').on('keyup', function() {
+    var value = $(this)
+    .val()
+    .toLowerCase()
+    $('#pokeSearchDiv *').filter(function() {
+      $(this).toggle(
+        $(this)
+        .text()
+        .toLowerCase()
+        .indexOf(value) > -1
+      );
+    });
   });
 });
