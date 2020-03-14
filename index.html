@@ -38,7 +38,7 @@
       </ul>
     </div>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+      <input class="form-control mr-sm-2" id="pokemon-search" type="search" autocomplete="off" placeholder="Search..." aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </nav>
@@ -46,7 +46,7 @@
 
 <header class="container-fluid">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-sm app-title">
       <h1 class="display-3 d-flex">Pokedex with jQuery</h1>
     </div>
   </div>
@@ -54,34 +54,34 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm">
-      <ul class="list-group pokemon-list"></ul>
+    <div class="col">
+      <div class="pokemon-list-wrap col col-sm-6 list-group" id="pokeSearchDiv">
+        <ul class="list-unstyled pokemon-list col"></ul>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Modal -->
-  <div class="modal fade" id="pokeModalScrollable" tabindex="-1" role="dialog" aria-labelledby="pokeModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal fade" id="pokeModalLong" tabindex="-1" role="dialog" aria-labelledby="pokeModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
 
       <!-- Modal Content -->
       <div class="modal-content">
         <!-- Modal header with title and close button -->
         <div class="modal-header">
-          <h5 class="modal-title" id="pokeModalScrollableTitle">Title:</h5>
+          <h5 class="modal-title w-100 text-center" id="pokeModalLongTitle">Title:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
         <!-- Modal Content Body (central data) -->
-        <div class="modal-body">
-
-        </div>
+        <div class="modal-body"></div>
 
         <!-- Modal Footer with close button -->
         <div class="modal-footer">
-          <button type="button" class="btn-btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn-btn-secondary close-modal-button" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
