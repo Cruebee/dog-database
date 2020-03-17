@@ -19,137 +19,161 @@
       href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="src/css/styles.css" />
     <title>Crue's jQuery Poke-tracker</title>
   </head>
   <!-- HTML content -->
   <body>
-    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Navigation</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item-active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About creator</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Other Projects coming soon</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact creator</a>
-          </li>
-        </ul>
-      </div>
-      <form class="form-inline">
-        <input
-          class="form-control mr-sm-2"
-          id="pokemon-search"
-          type="search"
-          autocomplete="off"
-          placeholder="Search..."
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
+    <div class="header-image">
+      <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navigation</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </form>
-    </nav>
-    <div class="container page-container">
-      <header class="container-fluid">
-        <div class="row">
-          <div class="col-sm">
-            <h1 class="display-3 app-title text-center">Bootstrap Pokedex</h1>
-          </div>
-        </div>
-      </header>
-
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div
-              class="pokemon-list-wrap col col-sm-6 list-group"
-              id="pokeSearchDiv"
-            >
-              <ul class="list-unstyled pokemon-list col"></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="pokeModalLong"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="pokeModalLongTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <!-- Modal Content -->
-          <div class="modal-content">
-            <!-- Modal header with title and close button -->
-            <div class="modal-header">
-              <h5 class="modal-title w-100 text-center" id="pokeModalLongTitle">
-                Title:
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item-active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
               >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <!-- Modal Content Body (central data) -->
-            <div class="modal-body"></div>
-
-            <!-- Modal Footer with close button -->
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn-btn-secondary close-modal-button"
-                data-dismiss="modal"
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About creator</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link disabled"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Other Projects coming soon</a
               >
-                Close
-              </button>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact creator</a>
+            </li>
+          </ul>
+        </div>
+        <form class="form-inline">
+          <input
+            class="form-control mr-sm-2"
+            id="pokemon-search"
+            type="search"
+            autocomplete="off"
+            placeholder="Search..."
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </nav>
+
+      <!-- page title/header -->
+      <div class="container page-container">
+        <header class="container-fluid">
+          <div class="row">
+            <div class="col-sm">
+              <h1 class="display-3 app-title text-center">Pokedex</h1>
             </div>
           </div>
-        </div>
+        </header>
       </div>
-
-      <!-- Page footer: add in links to portfolio and other Github projects -->
-      <footer class="container">
-        <div class="row">
-          <div class="col-sm">
-            <h3>You can also find me here:</h3>
-          </div>
-        </div>
-      </footer>
     </div>
+
+    <div class="container list-container-background">
+      <div class="row">
+        <div class="col">
+          <div
+            class="pokemon-list-wrap col col-sm-6 list-group"
+            id="pokeSearchDiv"
+          >
+            <ul class="list-unstyled pokemon-list col"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="pokeModalLong"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="pokeModalLongTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <!-- Modal Content -->
+        <div class="modal-content">
+          <!-- Modal header with title and close button -->
+          <div class="modal-header">
+            <h5 class="modal-title w-100 text-center" id="pokeModalLongTitle">
+              Title:
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- Modal Content Body (central data) -->
+          <div class="modal-body"></div>
+
+          <!-- Modal Footer with close button -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn-btn-secondary close-modal-button"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page footer: add in links to portfolio and other Github projects -->
+    <footer class="container footer-image">
+      <div class="row">
+        <div class="col-sm">
+          <p class="footer-title">Find Me On</p>
+          <div class="social-media">
+            <a href="https://github.com/Cruebee" target="_blank"
+              ><img src="img/github_icon.svg" alt="Github"
+            /></a>
+            <a href="https://twitter.com/cruebee" target="_blank"
+              ><img src="img/twitter-dark_icon.svg" alt="Twitter"
+            /></a>
+            <a
+              href="https://www.linkedin.com/in/crue-jameson-a8bb0219a/"
+              target="_blank"
+              ><img src="img/linkedin_icon.svg" alt="LinkedIn"
+            /></a>
+            <a href="https://www.instagram.com/cruebeedoobie/" target="_blank"
+              ><img src="img/instagram_icon.svg" alt="Instagram"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- this version of app will not use polyfills but should still work on older browsers -->
     <!-- You are using $.ajax features for your app so you must include full version of jQuery -->
     <script
