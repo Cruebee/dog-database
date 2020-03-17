@@ -1,5 +1,12 @@
 /* CSS stylesheet */
 
+/* Colors:
+Navy: #1e3d59;
+Eggshell: #f5f0e1;
+Orange: #ff6e40;
+Yellow: #ffc13b;
+*/
+
 /* Changes the padding of the content underneath the navbar */
 .page-container {
   margin-top: 56px;
@@ -14,7 +21,7 @@
 }
 
 body {
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Gloria Hallelujah', cursive, sans-serif;
   color: #000;
   background-position: center;
   background-image: url(../../img/pokeball-bg.svg);
@@ -80,11 +87,12 @@ button.close {
 }
 
 button.close:hover {
+  background-color: inherit;
   color: #ff6e40;
 }
 
 .btn-primary {
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Gloria Hallelujah', cursive, sans-serif;
   font-size: 30px;
   margin: auto;
   width: 100%;
@@ -92,11 +100,13 @@ button.close:hover {
   height: 60px;
   background-color: #ff6e40;
   border: none;
+  color: #f5f0e1;
 }
 
 .btn-primary:hover,
 .btn-primary:active {
   background-color: #ffc13b;
+  color: #f5f0e1;
   cursor: pointer;
   border: none;
 }
@@ -113,7 +123,7 @@ button.close:hover {
 }
 
 /* screen size adjustment for header spacing (padding changes when the navbar shrinks) */
-@media (max-width: 917px) {
+@media (max-width: 997px) {
   .page-container {
     margin-top: 90px;
     justify-content: center;
