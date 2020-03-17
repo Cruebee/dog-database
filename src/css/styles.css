@@ -2,17 +2,47 @@
 
 /* Changes the padding of the content underneath the navbar */
 .page-container {
-  margin-top: 90px;
+  margin-top: 56px;
   justify-content: center;
 }
 
-/* changes the background of the entire document */
+/* top background picture */
+.header-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../img/pikachu.svg);
+}
+
 body {
-  background-color: #898;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: #000;
+  background-position: center;
+  background-image: url(../../img/pokeball-bg.svg);
+  background-color: #fff;
+}
+
+/* page footer */
+.footer-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../img/poke-footer.svg);
+  height: 200px;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.footer-title {
+  font-size: 35px;
 }
 
 #pokemon-search {
   text-align: right;
+}
+
+/* modal customization */
+.modal-header {
+  background-color: #1e3d59;
+  color: #ff6e40;
 }
 
 .modal-title {
@@ -21,20 +51,57 @@ body {
 }
 
 .modal-body {
+  color: #1e3d59;
   text-transform: capitalize;
   text-align: center;
+  font-size: 20px;
   line-height: 0.5;
+  background-color: #f5f0e1;
+}
+
+.modal-footer {
+  background-color: #1e3d59;
+  color: #f5f0e1;
 }
 
 .close-modal-button {
-  border-color: red;
+  background-color: #ff6e40;
+  color: #f5f0e1;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+}
+
+/* button customization */
+button.close {
+  background-color: inherit;
+  color: #ff6e40;
+  font-size: 45px;
+}
+
+button.close:hover {
+  color: #ff6e40;
 }
 
 .btn-primary {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 30px;
   margin: auto;
   width: 100%;
+  text-transform: capitalize;
+  height: 60px;
+  background-color: #ff6e40;
+  border: none;
 }
 
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: #ffc13b;
+  cursor: pointer;
+  border: none;
+}
+
+/* list of generated pokemon customization */
 .pokemon-list-wrap {
   margin: auto;
   justify-content: center;
@@ -42,5 +109,34 @@ body {
 
 /* this changes the background of the list the pokemon buttons are on */
 .list-group-item {
-  background-color: #989;
+  background-image: linear-gradient(to right, #1e3d59, #f5f0e1);
+}
+
+/* screen size adjustment for header spacing (padding changes when the navbar shrinks) */
+@media (max-width: 917px) {
+  .page-container {
+    margin-top: 90px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-container {
+    margin-top: 56px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575px) {
+  .page-container {
+    margin-top: 100px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 468px) {
+  .page-container {
+    margin-top: 148px;
+    justify-content: center;
+  }
 }
