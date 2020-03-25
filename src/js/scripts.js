@@ -56,7 +56,7 @@ var pokemonRepository = (function() {
       '<li class="list-group-item list-group-item-action"></li>'
     );
     var $listButton = $(
-      '<button id="showPokeModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#pokeModalLong">' +
+      '<button id="showPokeModal" type="button" class="btn btn-custom" data-toggle="modal" data-target="#pokeModalLong">' +
         pokemon.name +
         '</button>'
     );
@@ -98,6 +98,30 @@ var pokemonRepository = (function() {
     return repository;
   }
 
+  // create search bar functionality:
+  $(document).ready(function() {
+    $('#pokemon-search').on('keyup', function() {
+      var value = $(this)
+        .val()
+        .toLowerCase();
+      $('#pokeSearchDiv *').filter(function() {
+        $(this).toggle(
+          $(this)
+            .text()
+            .toLowerCase()
+            .indexOf(value) > -1
+        );
+      });
+    });
+  });
+
+  // create a function to close dropdown menu when clicking outside drop-down
+  $(function() {
+    $(document).click(function() {
+      $('.navbar-collapse').collapse('hide');
+    });
+  });
+
   // return functions to be used outside IIFE:
   return {
     add: add,
@@ -110,26 +134,14 @@ var pokemonRepository = (function() {
   };
 })(); // end IIFE.
 
-// create list of pokemon buttons:
-pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon);
-  });
-});
-
-// create search bar functionality:
-$(document).ready(function() {
-  $('#pokemon-search').on('keyup', function() {
-    var value = $(this)
-      .val()
-      .toLowerCase();
-    $('#pokeSearchDiv *').filter(function() {
-      $(this).toggle(
-        $(this)
-          .text()
-          .toLowerCase()
-          .indexOf(value) > -1
-      );
+// Create IIFE for showing the list to be generated.
+var showPokemonList = (function() {
+  pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function(pokemon) {
+      pokemonRepository.addListItem(pokemon);
     });
   });
-});
+  return {
+    showPokemonList: showPokemonList
+  };
+})();
